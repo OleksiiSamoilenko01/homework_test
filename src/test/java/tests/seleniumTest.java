@@ -7,22 +7,19 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import java.util.List;
 import org.openqa.selenium.chrome.ChromeDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 public class seleniumTest {
-    private WebDriver driver;
+    WebDriver driver = new ChromeDriver();
     String URL = "https://www.google.com/?hl=en-US";
 
     @BeforeMethod
     public void chromedriverURL() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
         driver.get(URL);
         driver.manage().window().maximize();
     }
 
-    @AfterMethod
+    @AfterTest
     public void CloseBrowser() {
         driver.close();
     }
